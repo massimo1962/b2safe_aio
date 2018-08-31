@@ -1,18 +1,18 @@
 
 
-## build and run B2Safe all-in-one (with icat database)##
+## build and run B2Safe all-in-one (with icat database)
 
 
 
 disclaimer: every name and directory are not mandatory (except for the database) they could be whatever.
 
-1)build an image within irods and icat postrgesql:
+### 1)build an image within irods and icat postrgesql:
 ===============================================
 
 docker build -t "b2safe_aio:4.1.1" .
 (4.1.1 is B2Safe version)
 
-2)launch the all-in-one container:
+### 2)launch the all-in-one container:
 ===============================
 
 docker run -it --name eudat_b2safe  -v /data/b2safe_icat_db:/var/lib/postg2safe -v /mnt/seedstore_nfs:/var/lib/datairods -v /opt/eudat/b2safeRules:/var/lib/irods/myrules -v /opt/eudat/b2safeVault:/var/lib/irods/Vault -p 1247:1247 -p 1248:1248 -p 5432:5432 -p 20000-20199:20000-20199   b2safe_aio:4.1.1 /bin/bash
@@ -38,7 +38,7 @@ the rules directory is used to update some script , if needed, without touch the
 
  after docker container is started you are into container:
 
-3)SETUP iRODS as data-provider:
+### 3)SETUP iRODS as data-provider:
 ===============================
 
 inside container::-----------
@@ -123,8 +123,7 @@ user:irods password:xxxx
 "zone_port": 1247,
 "zone_user": "XXXXXXXX"
 
-4)
-start IRODS:
+### 4)start IRODS:
 ===========
 
 become irods user
@@ -133,8 +132,7 @@ su - irods
 cd /var/lib/irods
 ./irodsctl start
 
-5)
-check IRODS:
+### 5)check IRODS:
 =========================
 
 (su - irods)
@@ -147,10 +145,10 @@ ils
 --> irods works!
 
 
-6) B2SAFE & B2HANDLE:
+### 6)B2SAFE & B2HANDLE:
 ====================
 
-### Make packages
+#### Make packages
 
 check install.conf into /opt/eudat/b2safe/B2SAFE-core/packaging if is correctly setting - permission owner (irods)
 chek owner and permission in /opt/eudat/cert/ (owner : irods  - 0644)
@@ -161,21 +159,21 @@ cd /opt/eudat/b2safe/B2SAFE-core/packaging
 sudo dpkg -i /home/irods/debbuild/irods-eudat-b2safe_4.1-1.deb
 
 
-# install/configure B2Safe as the user who runs iRODS
+#### install/configure B2Safe as the user who runs iRODS
 sudo -s source /etc/irods/service_account.config
 cd /opt/eudat/b2safe/B2SAFE-core/packaging
  ./install.sh
  ATTENTION-> password for EPIC prefix required! XXXXXXXX
 
-# install B2HANDLE
+#### install B2HANDLE
 cd /opt/eudat/B2HANDLE/dist/
  sudo easy_install b2handle-1.1.1-py2.7.egg
 
 
-7) check B2Safe B2Handle:
+### 7)check B2Safe B2Handle:
 =========================
 
-# B2Safe::
+#### B2Safe::
 
 cd /opt/eudat/b2safe/B2SAFE-core/rules
 
@@ -184,7 +182,7 @@ irule -vF eudatGetV.r
 --> B2Safe works!
 
 
-# B2Handle::
+#### B2Handle::
 
 /opt/eudat/b2safe/cmd/epicclient.py os /opt/eudat/b2safe/conf/credentials create www.test-b2safe1.com
 
@@ -196,7 +194,7 @@ REMEMBER-> copy epicclient2.py on epicclient.py 'couse B2SAFE use only epicclien
 
 
 
-8) build Federation
+### 8)build Federation
 ===================
 
 in server_config.json add:
