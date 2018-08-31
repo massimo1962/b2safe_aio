@@ -122,13 +122,21 @@ user:irods password:xxxx
 
 -------------------------------------------
 "zone_key": "XXXXXXXX_ZONE_SID"
+
 "negotiation_key": "XXXXXXXX_byte_key_for_agent__conn",
+
 "server_control_plane_key": "XXXXXXXX__32byte_ctrl_plane_key"
+
 "xmsg_port": 1279,
+
 "zone_auth_scheme": "native",
+
 "zone_name": "XXXXXXXX",
+
 "zone_port": 1247,
+
 "zone_user": "XXXXXXXX"
+
 
 ### 4)start IRODS:
 ===========
