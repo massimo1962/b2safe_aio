@@ -6,8 +6,7 @@
 
 disclaimer: every name and directory are not mandatory (except for the database) they could be whatever.
 
-1) 
-build an image within irods and icat postrgesql:
+1)build an image within irods and icat postrgesql:
 ===============================================
 
 docker build -t "b2safe_aio:4.1.1" .
