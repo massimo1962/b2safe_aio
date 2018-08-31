@@ -70,10 +70,10 @@ line:
 41    data_directory = '/var/lib/postgresql/10/main'     --> 1 data_directory = '/var/lib/postg2safe/10/main'  <-- NB! : new path *postg2safe*  old path  *postgresql*
 ```
 
-
-
+then
+```
 service postgresql start
-
+```
 prep ICAT::-----------
 ----------------------
 
@@ -87,7 +87,7 @@ su - postgres
 
 psql
 
-postgres=# create user irods with password 'sdor';
+postgres=# create user irods with password 'xxxxxx';
 CREATE ROLE
 
 postgres=# create database "ICAT";
