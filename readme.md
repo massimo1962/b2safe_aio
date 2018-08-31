@@ -1,7 +1,7 @@
 
-########################################################
+
 ## build and run B2Safe all-in-one (with icat database)##
-########################################################
+
 
 
 disclaimer: every name and directory are not mandatory (except for the database) they could be whatever.
@@ -12,8 +12,7 @@ disclaimer: every name and directory are not mandatory (except for the database)
 docker build -t "b2safe_aio:4.1.1" .
 (4.1.1 is B2Safe version)
 
-2)
-launch the all-in-one container:
+2)launch the all-in-one container:
 ===============================
 
 docker run -it --name eudat_b2safe  -v /data/b2safe_icat_db:/var/lib/postg2safe -v /mnt/seedstore_nfs:/var/lib/datairods -v /opt/eudat/b2safeRules:/var/lib/irods/myrules -v /opt/eudat/b2safeVault:/var/lib/irods/Vault -p 1247:1247 -p 1248:1248 -p 5432:5432 -p 20000-20199:20000-20199   b2safe_aio:4.1.1 /bin/bash
@@ -39,9 +38,8 @@ the rules directory is used to update some script , if needed, without touch the
 
  after docker container is started you are into container:
 
-3) 
-SETUP iRODS as data-provider:
-============================
+3)SETUP iRODS as data-provider:
+===============================
 
 inside container::-----------
 -----------------------------
